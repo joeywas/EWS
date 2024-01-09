@@ -98,6 +98,7 @@ FunctionsToExport = @(
     
    'Connect-EWSService'
        'Get-EWSService'
+       'Get-EWSOauthToken'
 )
 
 # Cmdlets to export from this module
