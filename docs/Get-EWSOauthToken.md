@@ -101,3 +101,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 - [https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow](https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow)
+- [https://morgantechspace.com/2022/03/connect-ews-api-with-modern-authentication-using-powershell.html](https://morgantechspace.com/2022/03/connect-ews-api-with-modern-authentication-using-powershell.html)
