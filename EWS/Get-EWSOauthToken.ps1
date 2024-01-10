@@ -10,10 +10,10 @@ Function Get-EWSOAuthToken {
     M365 Tenant ID
 
     .PARAMETER AppId
-    Microsoft Azure Application ID.
+    Microsoft Azure Application ID also known as Client ID
 
     .PARAMETER AppSecret
-    Microsoft Azure Application secret.
+    Microsoft Azure Application secret
 
     #>
     Param (
@@ -28,8 +28,6 @@ Function Get-EWSOAuthToken {
     )
     begin {
         [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-        #$TLS12Protocol = [System.Net.SecurityProtocolType] 'Tls12'
-        #[System.Net.ServicePointManager]::SecurityProtocol = $TLS12Protocol
 
         $Uri = "https://login.microsoftonline.com/$($TenantID)/oauth2/v2.0/token"
 
@@ -41,7 +39,12 @@ Function Get-EWSOAuthToken {
         }
     }
     process {
-        $OauthResponse = Invoke-RestMethod -Method Post -Uri $Uri -Body $Body
-        $OauthResponse.access_token
+        try {
+            $OauthResponse = Invoke-RestMethod -Method Post -Uri $Uri -Body $Body
+            $OauthResponse.access_token    
+        } catch {
+            Write-Error -Message "[Get-EWSOauthToken] Failed to get access_token - $_"
+            return
+        }
     }
 }
