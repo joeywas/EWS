@@ -8,16 +8,18 @@ schema: 2.0.0
 # Connect-EWSService
 
 ## SYNOPSIS
+
 Connects to Exchange Web Service.
 
 ## SYNTAX
 
-```
+```powershell
 Connect-EWSService [-Mailbox] <String> [[-ServiceUrl] <String>] [[-Version] <ExchangeVersion>]
  [[-Credential] <PSCredential>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 Function that needs to be used first in order to create connection to Exchange Web Service.
 It supports both user-provided credentials and default credentials.
 By default it will attempt to auto-discover service URL. User may decide to provide it manually.
@@ -25,25 +27,28 @@ By default it will attempt to auto-discover service URL. User may decide to prov
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
+```powershell
 PS C:\> Connect-EWSService -Mailbox bartek.bielawski@live.com
 ```
 
-Connects to bartek.bielawski@live.com mailbox.
+Connects to `bartek.bielawski@live.com` mailbox.
 Uses default credentials and auto-discovers service URL.
 
 ### EXAMPLE 2
-```
+
+```powershell
 PS C:\> Connect-EWSService -Mailbox bartek.bielawski@live.com -Credential bartek.bielawski@live.com
 ```
 
-Connects to bartek.bielawski@live.com mailbox.
-Prompts for bartek.bielawski@live.com password. 
+Connects to `bartek.bielawski@live.com` mailbox.
+Prompts for `bartek.bielawski@live.com` password.
 Auto-discovers service URL.
 
 ## PARAMETERS
 
 ### -Credential
+
 Credentials used to authenticate to Exchange Web Service.
 
 ```yaml
@@ -59,6 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -Mailbox
+
 Mailbox that supports Exchange Web Services.
 
 ```yaml
@@ -74,6 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceUrl
+
 Optional URL to service (when specified, auto-discovery is not used).
 
 ```yaml
@@ -89,6 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
+
 Version of Exchange Web Service.
 
 ```yaml
@@ -105,7 +113,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters [http://go.microsoft.com/fwlink/?LinkID=113216](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
