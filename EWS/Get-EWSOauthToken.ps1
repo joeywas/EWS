@@ -7,7 +7,7 @@ Function Get-EWSOAuthToken {
     Uses Office 365 Application ID and Application Secret to generate an authentication token
 
     .PARAMETER TenantId
-    M365 Tenant ID
+    M365 Tenant ID, normally a GUID
 
     .PARAMETER AppId
     Microsoft Azure Application ID also known as Client ID
@@ -16,9 +16,10 @@ Function Get-EWSOAuthToken {
     Microsoft Azure Application secret
 
     #>
+    [CmdletBinding()]
     Param (
         [parameter(Mandatory = $true)]
-        [string]$TenantID,
+        [string]$TenantId,
 
         [parameter(Mandatory = $true)]
         [string]$AppId,
@@ -29,7 +30,7 @@ Function Get-EWSOAuthToken {
     begin {
         [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
 
-        $Uri = "https://login.microsoftonline.com/$($TenantID)/oauth2/v2.0/token"
+        $Uri = "https://login.microsoftonline.com/$($TenantId)/oauth2/v2.0/token"
 
         $Body = @{
             grant_type = 'client_credentials'
