@@ -15,13 +15,13 @@ Connects to Exchange Web Service.
 
 ```powershell
 Connect-EWSService [-Mailbox] <String> [[-ServiceUrl] <String>] [[-Version] <ExchangeVersion>]
- [[-Credential] <PSCredential>] [<CommonParameters>]
+ [[-Credential] <PSCredential>] [[-OauthToken] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
 Function that needs to be used first in order to create connection to Exchange Web Service.
-It supports both user-provided credentials and default credentials.
+It supports user-provided credentials, Oauth2 token, and default credentials.
 By default it will attempt to auto-discover service URL. User may decide to provide it manually.
 
 ## EXAMPLES
@@ -44,6 +44,19 @@ PS C:\> Connect-EWSService -Mailbox bartek.bielawski@live.com -Credential bartek
 Connects to `bartek.bielawski@live.com` mailbox.
 Prompts for `bartek.bielawski@live.com` password.
 Auto-discovers service URL.
+
+### EXAMPLE 3
+
+```powershell
+PS C:\> $Token = Get-EWSOauthToken
+PS C:\> $ServiceURL = 'https://outlook.office365.com/EWS/Exchange.asmx'
+PS C:\> $Mailbox = 'bartek.bielawski@abc123.onmicrosoft.com'
+PS C:\> Connect-EWSService -Mailbox $Mailbox -ServiceURL $ServiceURL -OauthToken $Token
+```
+
+Connects to `bartek.bielawski@abc123.onmicrosoft.com` mailbox.
+Uses the Microsoft 365 Exchange Web Services service url.
+Uses an Oauth2 access token obtained with `Get-EWSOauthToken`.
 
 ## PARAMETERS
 
@@ -107,6 +120,22 @@ Accepted values: Exchange2007_SP1, Exchange2010, Exchange2010_SP1, Exchange2010_
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OauthToken
+
+Oauth2 access token
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
